@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive SVG Drawing Tool with Mouse Event Handlers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      padding: 20px;
+    }
+    h2 {
+      margin-bottom: 10px;
+    }
+    .container {
+      border: 2px solid #444;
+      background: #fafafa;
+      padding: 10px;
+      display: inline-block;
+    }
+    svg {
+      border: 1px solid black;
+      background: #fdfdfd;
+      cursor: crosshair;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>SVG Drawing Tool</h2>
+    <svg id="drawingArea" width="600" height="400"></svg>
+  </div>
+
+  <script>
+    const svg = document.getElementById("drawingArea");
+    let drawing = false;
+    let path = null;
+
+    // Helper to get mouse coordinates relative to SVG
+    function getMousePosition(evt) {
+      const rect = svg.getBoundingClientRect();
+      return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+      };
+    }
+
+    svg.addEventListener("mousedown", (evt) => {
+      drawing = true;
+      const pos = getMousePosition(evt);
+
+      // Create a new path element
+      path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("stroke", "blue");
+      path.setAttribute("stroke-width", "2");
+      path.setAttribute("fill", "none");
+      path.setAttribute("d", `M${pos.x},${pos.y}`);
+      svg.appendChild(path);
+    });
+
+    svg.addEventListener("mousemove", (evt) => {
+      if (!drawing) return;
+      const pos = getMousePosition(evt);
+
+      // Append line segments to path
+      let d = path.getAttribute("d");
+      d += ` L${pos.x},${pos.y}`;
+      path.setAttribute("d", d);
+    });
+
+    svg.addEventListener("mouseup", () => {
+      drawing = false;
+      path = null;
+    });
+
+    svg.addEventListener("mouseleave", () => {
+      drawing = false;
+      path = null;
+    });
+  </script>
+</body>
+</html>
