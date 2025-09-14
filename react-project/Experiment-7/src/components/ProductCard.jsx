@@ -1,11 +1,14 @@
+// src/components/ProductCard.jsx
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import App from "../App.jsx"; // go up one directory
 
-import './index.css';
+function ProductCard({ name, price, status }) {
+  return (
+    <div className="product-card">
+      <h3>{name}</h3>
+      <p>Price: ${price}</p>
+      <p>Status: {status}</p>
+    </div>
+  );
+}
 
-createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+export default ProductCard;

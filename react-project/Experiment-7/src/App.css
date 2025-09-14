@@ -1,42 +1,15 @@
-.container {
-  border: 2px solid black;
-  padding: 20px;
-  text-align: center;
-  background: #fff;
-}
-
-.title {
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.product-list {
+.products-row {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap; /* makes it responsive */
+  justify-content: space-around;
+  gap: 20px; /* Optional spacing */
+  margin: 20px 0;
 }
 
-.card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 16px;
-  width: 200px;
-  background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.product-card {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 30px 40px;
+  width: 250px;
+  background: #fff;
+  text-align: center;
 }
-
-.card h3 {
-  margin-bottom: 10px;
-}
-
-.in-stock {
-  color: green;
-  font-weight: bold;
-}
-
-.out-of-stock {
-  color: red;
-  font-weight: bold;
-}
-
