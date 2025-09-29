@@ -6,9 +6,9 @@ const rl = readline.createInterface({
 });
 
 let employees = [
-  { name: 'Alice', id: 'E101' },
-  { name: 'Bob', id: 'E102' },
-  { name: 'Charlie', id: 'E103' }
+  { name: 'Amandeep', id: 'E101' },
+  { name: 'Aryan', id: 'E102' },
+  { name: 'Mohit', id: 'E103' }
 ];
 
 
