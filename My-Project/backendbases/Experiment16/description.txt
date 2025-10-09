@@ -1,0 +1,19 @@
+In this experiment, I learned how to implement secure authentication using JSON Web Tokens (JWT) in an Express.js application. I understood how JWT can be used to verify user identity and protect sensitive API routes, ensuring only authorized users can access banking operations.
+
+I developed a simple banking API with endpoints for viewing account balance (/balance), depositing money (/deposit), and withdrawing money (/withdraw). A /login route was created to accept a hardcoded username and password. Upon successful login, a signed JWT token was generated and returned to the client.
+
+I then built a JWT verification middleware to validate the token sent in the Authorization header before granting access to protected routes. This helped me understand how to secure routes, handle missing or invalid tokens, and manage authorization properly.
+
+Additionally, I implemented business logic validation—such as checking for sufficient balance during withdrawals—to simulate real-world banking security scenarios. Testing the API through Postman or curl demonstrated the end-to-end flow: logging in, obtaining a token, and using it to access protected endpoints.
+
+Through this task, I gained practical knowledge of:
+
+Generating and signing JWT tokens
+
+Verifying tokens through middleware
+
+Protecting sensitive API routes
+
+Handling authentication and authorization errors
+
+Implementing secure backend practices for financial operations
