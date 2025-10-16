@@ -1,0 +1,85 @@
+# Experiments Documentation
+
+## Experiment 19 — REST API and Database Integration
+Aim:
+Implement a RESTful API connected to a local database for CRUD.
+
+Tools:
+Node.js
+Express
+SQLite (or MongoDB)
+Postman
+
+Summary:
+Scaffolded an Express app.
+Defined routes for create, read, update, delete.
+Implemented a simple database layer.
+Used parameterized queries to avoid injection.
+Added basic input validation.
+Added error handling for common cases.
+Enabled JSON parsing with express.json().
+Logged requests and errors.
+Verified persistence with manual tests.
+
+Endpoints:
+POST /items  — create item
+GET /items   — list items
+GET /items/:id  — get item
+PUT /items/:id  — update item
+DELETE /items/:id  — delete item
+
+Database:
+Simple table with id, name, data, created_at.
+Auto-increment id or ObjectId for MongoDB.
+Local file or local server for storage.
+Simple migration or seed script included.
+
+Testing and Notes:
+Use Postman or curl to exercise API.
+Check responses and status codes.
+Fix validation errors before inserting.
+Log database errors for debugging.
+
+## Experiment 21 — Authentication & Authorization
+Aim:
+Add user authentication and role-based authorization to the API using secure tokens.
+
+Tools:
+Node.js
+Express
+bcrypt (password hashing)
+jsonwebtoken (JWT)
+SQLite (or MongoDB)
+Postman
+
+Summary:
+Implemented user registration and login with hashed passwords.
+Issued JWT access tokens and optional refresh tokens.
+Added middleware to verify JWTs and extract user info.
+Implemented role checks (e.g., user, admin) on protected routes.
+Stored refresh tokens or used a revocation strategy.
+Added basic rate-limiting and account lockout considerations.
+Validated inputs and returned appropriate HTTP status codes.
+
+Endpoints:
+POST /auth/register   — create user (name, email, password)
+POST /auth/login      — authenticate and return access (and refresh) token
+POST /auth/refresh    — exchange refresh token for new access token
+POST /auth/logout     — revoke refresh token
+GET /profile          — get current user (protected)
+PUT /users/:id        — update user (admin or owner)
+DELETE /users/:id     — delete user (admin)
+
+Database:
+Users table/collection: id, email (unique), hashed_password, role, created_at, last_login.
+Refresh tokens table/collection (optional): token, user_id, expires_at, revoked.
+Store only hashed passwords; keep JWT secret/config out of repo.
+Migrations or seed scripts to create admin user for testing.
+
+Testing and Notes:
+Test registration/login flow with Postman or curl.
+Verify token expiry, refresh flow, and revoked tokens.
+Test role-protected endpoints for both allowed and denied access.
+Log authentication failures and protect endpoints from brute force.
+Keep secrets in env vars; rotate keys as needed.
+
